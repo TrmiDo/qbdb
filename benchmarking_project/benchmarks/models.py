@@ -35,6 +35,9 @@ class Processor(models.Model):
     topology_id = models.ForeignKey(Topology, on_delete=models.CASCADE, null=True, blank=True, default=None)
     intro_year = models.IntegerField(null=True, blank=True, default=None)
     rep_rate = models.FloatField(null=True, blank=True, default=None)
+    url1 = models.URLField(max_length=200, blank=True)
+    url2 = models.URLField(max_length=200, blank=True)
+    notes = models.TextField(blank=True)
 
     def __str__(self):
         return self.name
@@ -174,6 +177,9 @@ class PerformanceReport(models.Model):
     url1 = models.URLField(max_length=200, blank=True)
     url2 = models.URLField(max_length=200, blank=True)
     notes = models.TextField(null=True, blank=True, default=None)
+
+    def __str__(self):
+        return f"{self.problem_id} (system={self.system_id.name}, embedding={self.embedding_id.name}, solver={self.solver_id.name})"
 
     def clean(self):
         super().clean()
