@@ -1,7 +1,44 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 
-# Create your models here.  
+# Single Column Models
+class Manufacturer(models.Model):
+    name = models.CharField(max_length=50, null=False, blank=False)
+
+    def __str__(self):
+        return self.name
+
+class Technology(models.Model):
+    name = models.CharField(max_length=50, null=False, blank=False)
+
+    def __str__(self):
+        return self.name
+    
+class EmbeddingAlgorithm(models.Model):
+    name = models.CharField(max_length=50, null=False, blank=False)
+
+    def __str__(self):
+        return self.name
+    
+class Solver(models.Model):
+    name = models.CharField(max_length=50, null=False, blank=False)
+
+    def __str__(self):
+        return self.name
+
+class TimeType(models.Model):
+    name = models.CharField(max_length=50, null=False, blank=False)
+
+    def __str__(self):
+        return self.name
+
+class PerformanceMetric(models.Model):
+    name = models.CharField(max_length=50, null=False, blank=False)
+
+    def __str__(self):
+        return self.name
+
+# Multi-Column Models 
 class Topology(models.Model):
     name = models.CharField(max_length=50, null=False, blank=False)
     physical_qubits_per_cell = models.IntegerField(null=False, blank=False)
@@ -11,18 +48,6 @@ class Topology(models.Model):
     url1 = models.URLField(max_length=200, blank=True)
     url2 = models.URLField(max_length=200, blank=True)
     notes = models.TextField(blank=True)
-
-    def __str__(self):
-        return self.name
-
-class Manufacturer(models.Model):
-    name = models.CharField(max_length=50, null=False, blank=False)
-
-    def __str__(self):
-        return self.name
-    
-class Technology(models.Model):
-    name = models.CharField(max_length=50, null=False, blank=False)
 
     def __str__(self):
         return self.name
@@ -113,30 +138,6 @@ class Calibration(models.Model):
     url1 = models.URLField(max_length=200, blank=True)
     url2 = models.URLField(max_length=200, blank=True)
     notes = models.TextField(blank=True)
-
-class EmbeddingAlgorithm(models.Model):
-    name = models.CharField(max_length=50, null=False, blank=False)
-
-    def __str__(self):
-        return self.name
-    
-class Solver(models.Model):
-    name = models.CharField(max_length=50, null=False, blank=False)
-
-    def __str__(self):
-        return self.name
-
-class TimeType(models.Model):
-    name = models.CharField(max_length=50, null=False, blank=False)
-
-    def __str__(self):
-        return self.name
-
-class PerformanceMetric(models.Model):
-    name = models.CharField(max_length=50, null=False, blank=False)
-
-    def __str__(self):
-        return self.name
     
 class Graph(models.Model):
     name = models.CharField(max_length=50, null=False, blank=False)

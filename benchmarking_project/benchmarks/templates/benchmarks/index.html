@@ -1,5 +1,32 @@
 {% extends "benchmarks/base.html" %}
 {% block title %}Benchmarks{% endblock %}
 {% block content %}
-    <h1>Hello World!</h1>
+    <h1>Benchmarking Pages</h1>
+
+    <h2><a href="http://127.0.0.1:8000/benchmarks/admin/">Admin Site</a></h2>
+
+    <h2>Single Column Tables</h2>
+    <ul>
+        <li><a href="http://127.0.0.1:8000/benchmarks/manufacturers/">Manufacturers</a></li>
+        <li><a href="http://127.0.0.1:8000/benchmarks/technologies/">Technologies</a></li>
+        <li><a href="http://127.0.0.1:8000/benchmarks/embeddingalgorithms/">Embedding Algorithms</a></li>
+        <li><a href="http://127.0.0.1:8000/benchmarks/solvers/">Solvers</a></li>
+        <li><a href="http://127.0.0.1:8000/benchmarks/timetypes/">Time Types</a></li>
+        <li><a href="http://127.0.0.1:8000/benchmarks/performancemetrics/">Performance Metrics</a></li>
+    </ul>
+
+    <h2>Multi-Column Tables</h2>
+    <ul>
+        <li><a href="http://127.0.0.1:8000/benchmarks/topologies/">Topologies</a></li>
+        <li><a href="http://127.0.0.1:8000/benchmarks/processors/">Processors</a></li>
+        <li><a href="http://127.0.0.1:8000/benchmarks/gatesets/">Gate Sets</a></li>
+        <li><a href="http://127.0.0.1:8000/benchmarks/gates/">Gates</a></li>
+        <li><a href="http://127.0.0.1:8000/benchmarks/gatesetmemberships/">Gate Set Membership</a></li>
+        <li><a href="http://127.0.0.1:8000/benchmarks/systems/">Systems</a></li>
+        <li><a href="http://127.0.0.1:8000/benchmarks/calibrations/">Calibrations</a></li>
+        <li><a href="http://127.0.0.1:8000/benchmarks/graphs/">Graphs</a></li>
+        <li><a href="http://127.0.0.1:8000/benchmarks/problems/">Problems</a></li>
+        <li><a href="http://127.0.0.1:8000/benchmarks/performancereports/">Performance Reports</a></li>
+    </ul>
+
 {% endblock %}
