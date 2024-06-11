@@ -1,0 +1,121 @@
+.LogoA{
+    margin:0;
+    padding: 0;
+}
+.AppLogo{
+    margin: 1000;
+    padding: 1000;
+    margin-left: 5vw;
+}
+.tabsitem{
+    display: inline;
+    font-family: 'Roboto';
+    border-radius: 10px;
+    margin:0px;
+    position: relative;
+    
+
+    
+}
+.tabsitem a {
+    text-decoration: none; /* Remove underline */
+    color: white; /* Change text color */
+    padding: 10px; /* Add some padding */
+    display: inline-block; /* Make padding apply correctly */
+    margin:0px;
+}
+
+.tabsitem a:hover {
+    
+    background-color: rgba(255, 255, 255, 0.05); /* Add background color on hover */
+    fill-opacity: unset;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    border:0px;
+    
+}
+
+.sublist {
+    display: none;
+    position: absolute;
+    top: 300%;
+    left: 0;
+    background-color: rgb(12, 35, 64);
+    padding: 10px 0;
+    list-style: none;
+    margin: 0;
+    width: 200px;
+    border-radius: 5px;
+}
+
+.sublist .sublist-item a {
+    padding: 10px 20px;
+    color: white;
+}
+
+.sublist .sublist-item a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.tabsitem:hover .sublist {
+    display: block;
+}
+
+.tabs{
+    
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 10%;
+    border:0px;
+}
+
+.dbheader {
+width: 102%;
+ display: flex;
+ align-items: center;
+justify-content: space-between; 
+background-color: rgb(12, 35, 64);
+color: white;
+ position: -webkit-sticky; 
+position: sticky;
+top: 0;
+padding: 0px; 
+margin: 0px;
+border:0px;
+/*border-radius: 10px;*/
+}
+.dbheader::before {
+    content: "";
+    position: absolute;
+    top: -10px; /* Adjust based on desired overlap */
+    left: 0;
+    right: 0;
+    height: 20px; 
+    background-color:#ae9142; 
+    z-index: -1; 
+}
+/**{
+    border: 2px solid #000;
+}*/
+
+body{
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+.dbfooter {
+    padding: 1%;
+    width: 100%; /* Ensure it stretches across the full width */
+    background-color: whitesmoke;
+    display: flex; /* Use flexbox for horizontal alignment */
+    justify-content: space-around;
+}
+
+.footeraddress{
+    list-style-type: none; /* Removes bullet points */
+    font-family: 'Roboto'
+}
+
+
+

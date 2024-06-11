@@ -1,11 +1,52 @@
+{% load static%}
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="{% static 'benchmarks\css\style.css'%}">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <div id="content">
-        {% block content %}{% endblock %}
-    </div>
+    <header class="dbheader" class="LogoA">
+        <a href="/benchmarks">
+            <img src="{% static 'benchmarks/images/Notre-Dame-Leprechaun-Logo2.png' %}" alt="AppLogo">
+        </a>
+        <ul class="tabs">
+            <li class="tabsitem"><a href="/admin">Admin Site</a></li>
+            <li class="tabsitem"><a>Single Column</a>
+                <ul class="sublist">
+                    <li class="sublist-item"><a href="/benchmarks/manufacturers">Manufacturers</a></li>
+                    <li class="sublist-item"><a href="/benchmarks/technologies">Technologies</a></li>
+                    <li class="sublist-item"><a href="/benchmarks/embeddingalgorithms">Embedding Algorithm</a></li>
+                    <li class="sublist-item"><a href="/benchmarks/solvers">Solvers</a></li>
+                    <li class="sublist-item"><a href="/benchmarks/timetypes">Time Types</a></li>
+                    <li class="sublist-item"><a href="/benchmarks/performancemetrics">Performance Metrics</a></li>
+                </ul>
+            </li>
+            <li class="tabsitem"><a>Multiple Column</a>
+                <ul class="sublist">
+                    <li class="sublist-item"><a href="/benchmarks/topologies">Topologies</a></li>
+                    <li class="sublist-item"><a href="/benchmarks/processors">Processors</a></li>
+                    <li class="sublist-item"><a href="/benchmarks/gatesets">Gate Sets</a></li>
+                    <li class="sublist-item"><a href="/benchmarks/gates">Gates</a></li>
+                    <li class="sublist-item"><a href="/benchmarks/gatesetmemberships">Gate Set Membership</a></li>
+                    <li class="sublist-item"><a href="/benchmarks/systems">Systems</a></li>
+                    <li class="sublist-item"><a href="/benchmarks/calibrations">Calibrations</a></li>
+                    <li class="sublist-item"><a href="/benchmarks/graphs">Graphs</a></li>
+                    <li class="sublist-item"><a href="/benchmarks/problems">Problems</a></li>
+                    <li class="sublist-item"><a href="/benchmarks/performancereports">Performance Reports</a></li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    {% block content %}{% endblock %}
+    <footer class="dbfooter">
+            <img src="{% static 'benchmarks\images\ndlogo2.png' %}" alt="FooterAppLogo">
+            <ul class="footeraddress">
+                <li class="footeraddressitem"><a>Notre Dame, IN 46556 USA</a></li>
+                <li class="footeraddressitem"><a>Phone: (574) 631-5000</a></li>
+                <li class="footeraddressitem"><a>Made by: Peter Kogge, Ulrik de Muelenaere, Luke Braby, Triet Do</a></li>
+            </ul>
+    </footer>
+    
 </body>
 </html>

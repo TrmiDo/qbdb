@@ -1,32 +1,41 @@
 {% extends "benchmarks/base.html" %}
+
 {% block title %}Benchmarks{% endblock %}
+
 {% block content %}
-    <h1>Benchmarking Pages</h1>
+{% load static %}
+<link rel="stylesheet" href="{% static 'benchmarks/css/style1.css' %}">
+<div>
+    <div class="container">
+        <div class="petercontent"><div><img src="{% static 'benchmarks/images/koge.jpg' %}" class="peterprofilepic"></div></div>
+        <div class="profile-container">
+            <h1>Peter M. Kogge</h1>
+            <p class="profilecomment">
+                Prof. Kogge’s research areas include massively parallel processing architectures, advanced VLSI technology and architectures, non van Neumann models of programming and execution, parallel algorithms and applications and their impact on computer architecture.
+                Since the late 1980s this has focused on single VLSI chip designs integrating both memory and logic into “Processing-in-Memory”(PIM) architectures, direct and efficient software models to support them, and scaling multiple chips to complete systems. This includes not only efficient parallel processing topologies, control strategies, and chip floor plans, but also doing so with inherently low-power CPU architectures for a range of real-system applications, from highly scalable deep-space exploration to petaflops-level supercomputing as part of the HTMT project. Other work is investigating how PIM-like ideas may port into quantum cellular array logic, where instead of “Processing-in-Memory” we have opportunities for “Processing-in-Wire.”
+            </p></div>
+        
+    </div>
+    <div class="container">
+            <div class="profile-container">
+                <h1>Ulrik de Muelenaere</h1>
+                <p class="profilecomment">
+                    Mr. Ulrik de Muelenaere, a BSc Computer Science graduate, has demonstrated exceptional academic prowess, earning the prestigious Vice-Chancellor and Principal award. Currently pursuing a PhD in Computer Science and Engineering at the University of Notre Dame, Ulrik is a recipient of the Arthur J. Schmitt Presidential Leadership Fellowship (2022). He has made significant contributions to the field, including authoring "QGAT: A Generate-and-Test Paradigm for Quantum Circuits" within the PLanQC 2024-track. We are immensely proud of Ulrik and wish him continued success in his academic and professional endeavors.
+                </p></div>
+            <div class="ulrikcontent"><div><img src="{% static 'benchmarks/images/Ulrik.png' %}" class="ulrikprofilepic"></div></div>
+            
+            
+        </div>
 
-    <h2><a href="http://127.0.0.1:8000/benchmarks/admin/">Admin Site</a></h2>
-
-    <h2>Single Column Tables</h2>
-    <ul>
-        <li><a href="http://127.0.0.1:8000/benchmarks/manufacturers/">Manufacturers</a></li>
-        <li><a href="http://127.0.0.1:8000/benchmarks/technologies/">Technologies</a></li>
-        <li><a href="http://127.0.0.1:8000/benchmarks/embeddingalgorithms/">Embedding Algorithms</a></li>
-        <li><a href="http://127.0.0.1:8000/benchmarks/solvers/">Solvers</a></li>
-        <li><a href="http://127.0.0.1:8000/benchmarks/timetypes/">Time Types</a></li>
-        <li><a href="http://127.0.0.1:8000/benchmarks/performancemetrics/">Performance Metrics</a></li>
-    </ul>
-
-    <h2>Multi-Column Tables</h2>
-    <ul>
-        <li><a href="http://127.0.0.1:8000/benchmarks/topologies/">Topologies</a></li>
-        <li><a href="http://127.0.0.1:8000/benchmarks/processors/">Processors</a></li>
-        <li><a href="http://127.0.0.1:8000/benchmarks/gatesets/">Gate Sets</a></li>
-        <li><a href="http://127.0.0.1:8000/benchmarks/gates/">Gates</a></li>
-        <li><a href="http://127.0.0.1:8000/benchmarks/gatesetmemberships/">Gate Set Membership</a></li>
-        <li><a href="http://127.0.0.1:8000/benchmarks/systems/">Systems</a></li>
-        <li><a href="http://127.0.0.1:8000/benchmarks/calibrations/">Calibrations</a></li>
-        <li><a href="http://127.0.0.1:8000/benchmarks/graphs/">Graphs</a></li>
-        <li><a href="http://127.0.0.1:8000/benchmarks/problems/">Problems</a></li>
-        <li><a href="http://127.0.0.1:8000/benchmarks/performancereports/">Performance Reports</a></li>
-    </ul>
-
+        <div class="container">
+                <div class="brabycontent"><div><img src="{% static 'benchmarks/images/braby.jpg' %}" class="brabyprofilepic"></div></div>
+                <div class="profile-container">
+                        <h1>Luke Braby</h1>
+                        <p class="profilecomment">
+                        Luke Braby is a Computer Science student at the University of Notre Dame and a Stamps Scholar, with a strong background in software engineering and research. He has held multiple internships, including at Volexity and Copia, where he developed Go programs for memory scanning, designed a versatile memory pool scanner, collaborated on a Go-based REST API, and developed an ETL pipeline for delivery route data. He also worked on automating Sisense rebuilds with AWS Lambda and significantly improved system performance by caching AWS Cognito results in Redis. Luke has experience as a Teaching Assistant at Notre Dame, where he held office hours and graded assignments, and as a Research Assistant in the Cooperative Computing Lab/CVRL, where he created command line programs for data management in biometrics research. His programming internship at Surdex Corporation involved developing image filters and improving image processing tools. Luke's early research at Notre Dame's Computer Vision Research Lab included image hashing methods, sensor interfacing, and writing patch matching tests using ORB and SIFT descriptors. He holds a high school diploma from Saint Louis Abbey/Saint Louis Priory School.
+                    </p></div>
+                
+            </div>
+    
+</div>
 {% endblock %}

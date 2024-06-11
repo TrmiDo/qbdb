@@ -1,0 +1,11 @@
+{% extends "benchmarks/base.html" %}
+{% block title %}Benchmarks{% endblock %}
+{% block content %}
+    <div class="container">
+        {% load custom_tags %}
+        <h1>{{ view.model|verbose_name_plural }}</h1>
+        {% load render_table from django_tables2 %}
+        {% render_table table %}
+    </div>
+</body>
+{% endblock %}
