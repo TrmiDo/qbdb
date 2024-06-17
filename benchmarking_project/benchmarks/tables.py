@@ -1,5 +1,33 @@
 import django_tables2 as tables
-from .models import Manufacturer ,Technology,EmbeddingAlgorithm,Solver,TimeType,PerformanceMetric,Topology,Processor,GateSet,Gate,GateSetMembership,System,Calibration,Graph,Problem,PerformanceReport
+from .models import Manufacturer ,Technology,Solver,PerformanceMetric,Topology,Processor,GateSet,Gate,GateSetMembership,System,Calibration,Graph,Problem,PerformanceReport
+from .models import CompilationTool, CompilationAlgorithmn, CompilationStep, PerformanceValue, ProblemInstance
+
+
+class CompilationToolTable(tables.Table):
+    class Meta:
+        model = CompilationTool
+        template_name = "django_tables2/bootstrap.html"
+
+class CompilationAlgorithmnTable(tables.Table):
+    class Meta:
+        model = CompilationAlgorithmn
+        template_name = "django_tables2/bootstrap.html"
+
+class CompilationStepTable(tables.Table):
+    class Meta:
+        model = CompilationStep
+        template_name = "django_tables2/bootstrap.html"
+
+class PerformanceValueTable(tables.Table):
+    class Meta:
+        model = PerformanceValue
+        template_name = "django_tables2/bootstrap.html"
+
+class ProblemInstanceTable(tables.Table):
+    class Meta:
+        model = ProblemInstance
+        template_name = "django_tables2/bootstrap.html"
+
 class ManufacturerTable(tables.Table):
     class Meta:
         model = Manufacturer
@@ -9,18 +37,12 @@ class TechnologyTable(tables.Table):
     class Meta:
         model = Technology
         template_name = "django_tables2/bootstrap.html"
-class EmbeddingAlgorithmTable(tables.Table):
-    class Meta:
-        model = EmbeddingAlgorithm
-        template_name = "django_tables2/bootstrap.html"
+
 class SolverTable(tables.Table):
     class Meta:
         model = Solver
         template_name = "django_tables2/bootstrap.html"
-class TimeTypeTable(tables.Table):
-    class Meta:
-        model = TimeType
-        template_name = "django_tables2/bootstrap.html"
+
 class PerformanceMetricTable(tables.Table):
     class Meta:
         model = PerformanceMetric
