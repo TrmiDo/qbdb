@@ -182,13 +182,7 @@ class PerformanceReport(models.Model):
 
     
 
-    def clean(self):
-        super().clean()
-        if self.time is not None and self.time_type_id is None:
-            raise ValidationError({'time_type_id': 'Time type must be specified if time is to be provided.'})
-        if self.performance_value is not None and self.performance_metric_id is None:
-            raise ValidationError({'performance_metric_id': 'Performance metric type must be specified if performance value is to be provided.'})
-
+    
 # New Multiple Columns Model
 class CompilationStep(models.Model):
     compilation_tool = models.ForeignKey(CompilationTool,on_delete=models.SET_NULL, null=True, blank=False)
@@ -205,6 +199,12 @@ class PerformanceValue(models.Model):
 
     def __str__(self):
         return f"{self.metric}, {self.value}, {self.performance_report_id}"
+
+class ErrorLog(models.Model):
+    timestamp = models.DateTimeField(auto_now_add=True)
+    error_message = models.TextField()
+    
+    querycode= models.TextField()
 
 
     

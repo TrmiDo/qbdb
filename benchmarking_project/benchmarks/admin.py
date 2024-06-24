@@ -4,7 +4,7 @@ from .models import GateSet, Gate, GateSetMembership
 from .models import System, Calibration
 from .models import Solver, PerformanceMetric, Graph, Problem, PerformanceReport
 from .models import CompilationTool, CompilationAlgorithmn, CompilationStep, PerformanceValue, ProblemInstance
-# Register your models here.
+from .models import ErrorLog# Register your models here.
 admin.site.register(Topology)
 admin.site.register(Manufacturer)
 admin.site.register(Technology)
@@ -24,3 +24,4 @@ admin.site.register(CompilationAlgorithmn)
 admin.site.register(CompilationStep)
 admin.site.register(PerformanceValue)
 admin.site.register(ProblemInstance)
+admin.site.register(ErrorLog)
