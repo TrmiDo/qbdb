@@ -1,0 +1,130 @@
+{% extends "benchmarks/base.html" %}
+{% block title %}Benchmarks{% endblock %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'benchmarks/css/style3.css' %}">
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+
+<title>Benchmarks</title>   
+
+<h1>Joined Table Results</h1>
+<form method="get" >
+    
+    <div>
+        <h2>Select Table</h2>
+        <div class = "Table_List">
+            <ul>
+                <li><label><input type="checkbox" name="tables" value="benchmarks_manufacturer"  {% if 'benchmarks_manufacturer' in selected_tables %}checked{% endif %}> Manufactor</label></li>
+                <li><label><input type="checkbox" name="tables" value="benchmarks_technology"  {% if 'benchmarks_technology' in selected_tables %}checked{% endif %}> Technology</label></li>
+                <li><label><input type="checkbox" name="tables" value="benchmarks_solver"  {% if 'benchmarks_solver' in selected_tables %}checked{% endif %}> Solver</label></li>
+                <li><label><input type="checkbox" name="tables" value="benchmarks_performancemetric"  {% if 'benchmarks_performancemetric' in selected_tables %}checked{% endif %}> Performance Metric</label></li>
+                <li><label><input type="checkbox" name="tables" value="benchmarks_compilationtool"  {% if 'benchmarks_compilationtool' in selected_tables %}checked{% endif %}>  Compilation Tool</label></li>
+                <li><label><input type="checkbox" name="tables" value="benchmarks_compliationalgorithmn"  {% if 'benchmarks_compliationalgorithmn' in selected_tables %}checked{% endif %}> Compilation Algorithm</label></li>
+                <li><label><input type="checkbox" name="tables" value="benchmarks_topology"  {% if 'benchmarks_topology' in selected_tables %}checked{% endif %}> Topology</label></li>
+                <li><label><input type="checkbox" name="tables" value="benchmarks_processor"  {% if 'benchmarks_processor' in selected_tables %}checked{% endif %}> Processor</label></li>
+                <li><label><input type="checkbox" name="tables" value="benchmarks_gateset"  {% if 'benchmarks_gateset' in selected_tables %}checked{% endif %}> Gate Set</label></li>
+                <li><label><input type="checkbox" name="tables" value="benchmarks_gate"  {% if 'benchmarks_gate' in selected_tables %}checked{% endif %}> Gate</label></li>
+                <li><label><input type="checkbox" name="tables" value="benchmarks_gatsetmembership"  {% if 'benchmarks_gatsetmembership' in selected_tables %}checked{% endif %}> Gate Set membership</label></li>
+                <li><label><input type="checkbox" name="tables" value="benchmarks_system"  {% if 'benchmarks_system' in selected_tables %}checked{% endif %}> System</label></li>
+                <li><label><input type="checkbox" name="tables" value="benchmarks_calibration"  {% if 'benchmarks_calibration' in selected_tables %}checked{% endif %}> Calibration</label></li>
+                <li><label><input type="checkbox" name="tables" value="benchmarks_graph"  {% if 'benchmarks_graph' in selected_tables %}checked{% endif %}> Graph</label></li>
+                <li><label><input type="checkbox" name="tables" value="benchmarks_problem"  {% if 'benchmarks_problem' in selected_tables %}checked{% endif %}> Problem</label></li>
+                <li><label><input type="checkbox" name="tables" value="benchmarks_probleminstance"  {% if 'benchmarks_probleminstance' in selected_tables %}checked{% endif %}> Problem Instance</label></li>
+                <li><label><input type="checkbox" name="tables" value="benchmarks_performancereport"  {% if 'benchmarks_performancereport' in selected_tables %}checked{% endif %}> Performance Report</label></li>
+                <li><label><input type="checkbox" name="tables" value="benchmarks_compilationstep"  {% if 'benchmarks_compilationstep' in selected_tables %}checked{% endif %}> Compilation Step</label></li>
+                <li><label><input type="checkbox" name="tables" value="benchmarks_performancevalue"  {% if 'benchmarks_performancevalue' in selected_tables %}checked{% endif %}> Performance Value</label></li>
+                
+            </ul>
+            
+        </div>
+    </div>
+
+    <div>
+        <button type="submit">Update Table</button>
+    </div>
+
+    <label><input type="checkbox" name="columns" value="reset" >Reset</label>
+
+
+
+    <div class="scrollable-container">
+            
+            <table id ="example" class="display">
+
+                <thead>
+                        <tr>
+                            {% for name, num in combined %}
+                                <th colspan="{{ num }}">{{ name }}</th>
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            {% for col in columns %}
+                                <th>
+                                    <input type="checkbox" name="columns" value="{{col}}" >
+                                </th>
+                            {% endfor %}
+                        </tr>
+                
+                        <tr>
+                            {% for col in colname %}
+                                <th>
+                                    <a class="itemheader">{{ col }}</a>
+                                </th>
+                            {% endfor %}
+                        </tr>
+                
+                        <tr>
+                            {% for col in columns %}
+                                <th>
+                                    {% with "filter_"|add:col as filter_name %}
+                                        <input type="hidden" name="filter" value="{{ col }}" />
+                                        <input type="text" name="filter" />
+                                    {% endwith %}
+                                </th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                <tbody>
+                    {% for row in joined_results %}
+                        <tr>
+                            {% for item in row %}
+                                <td>
+                                    {% if item|slice:":4" == "http" %}
+                                        <a href="{{ item }}">{{ item }}</a>
+                                    {% else %}
+                                        {{ item }}
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button id="downloadButton">Download CSV</button>
+        </div>
+
+        
+</form>
+
+
+
+
+<script>
+        $(document).ready(function() {
+            
+            $('#example').DataTable({
+                
+                "scrollX": true,    // Enable horizontal scrolling
+                "paging": true,     // Enable pagination
+                "searching": false,  // Enable searching
+                "ordering": true    // Enable column sorting
+            });
+            
+        });
+        
+</script>
+<script src="{% static 'benchmarks/scripts/script1.js' %}"></script>
+{% endblock %}

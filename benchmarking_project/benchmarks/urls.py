@@ -6,7 +6,7 @@ from benchmarks.views import SystemTable, CalibrationTable,  SolverTable, Perfor
 from benchmarks.views import GraphTable, ProblemTable, PerformanceReportTable
 from benchmarks.views import Performance, ProblemInstanceList, SystemCali, ProcessorList, GateList
 from benchmarks.views import CompilationToolTable, CompilationAlgorithmnTable, CompilationStepTable, PerformanceValueTable, ProblemInstanceTable
-from benchmarks.views import customize
+from benchmarks.views import customize, manytable, Value, Value2
 from . import views
 app_name = 'benchmarks'  # creates a namespace for this app
 urlpatterns = [
@@ -38,8 +38,11 @@ urlpatterns = [
     path('joined-system/', SystemCali, name='joined_performance'),
     path('joined-processor/', ProcessorList, name='joined_performance'),
     path('joined-gate/', GateList, name='joined_performance'),
+    path('value/', Value, name='joined_performance'),
+    path('value2/', Value2, name='joined_performance'),
 
     path('customize/', customize, name='customize'),
+    path('ManyTable/', manytable, name='manytable'),
 
 
 ]

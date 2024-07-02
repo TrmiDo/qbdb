@@ -10,6 +10,8 @@ from .tables import CompilationToolTable, CompilationAlgorithmnTable, Compilatio
 from django.db import connection
 from django.http import HttpRequest
 from .models import ErrorLog
+from .graph import graph
+import pandas as pd
 # Create your views here.
 def index(request):
     return render(request, 'benchmarks/index.html')
@@ -216,6 +218,51 @@ def GateList(request):
     }
     return render(request, 'benchmarks/maintable.html', context)
 
+def Value(request):
+    
+    with connection.cursor() as cursor:
+        cursor.execute('''SELECT performance_report_id,
+        GROUP_CONCAT(value || ' ' || name, ', ') AS combined,
+        MAX(CASE 
+               WHEN name = 'Modularity Ratio (current/Best)' THEN value
+               ELSE NULL
+           END) AS Desire
+        FROM benchmarks_performancevalue
+        full join benchmarks_performancemetric on benchmarks_performancemetric.id = benchmarks_performancevalue.metric_id
+        group by performance_report_id
+        ''')
+        joined_results = cursor.fetchall()
+
+    # Check if any results were fetched
+    if not joined_results:
+        print("No results found")
+
+    columns = [col[0] for col in cursor.description]
+    context = {
+        'joined_results': joined_results,  # Ensure this matches your template
+        'columns': columns
+    }
+    return render(request, 'benchmarks/maintable.html', context)
+def Value2(request):
+    
+    with connection.cursor() as cursor:
+        cursor.execute('''SELECT *
+        FROM benchmarks_performancevalue
+        full join benchmarks_performancemetric on benchmarks_performancemetric.id = benchmarks_performancevalue.metric_id
+        
+        ''')
+        joined_results = cursor.fetchall()
+
+    # Check if any results were fetched
+    if not joined_results:
+        print("No results found")
+
+    columns = [col[0] for col in cursor.description]
+    context = {
+        'joined_results': joined_results,  # Ensure this matches your template
+        'columns': columns
+    }
+    return render(request, 'benchmarks/maintable.html', context)
 
 def customize(request: HttpRequest):
     
@@ -223,6 +270,7 @@ def customize(request: HttpRequest):
     user_base = request.GET.getlist('base')
     user_joins = request.GET.getlist('joins')
     user_filter= request.GET.getlist('filter')
+
     
 
     if user_base:
@@ -303,6 +351,7 @@ def customize(request: HttpRequest):
             return render(request, 'benchmarks/index.html')
 
     context = {
+        'sql_query': sql_query,
         'joined_results': joined_results,
         'columns': columns,
         'selected_columns': user_columns,
@@ -310,4 +359,111 @@ def customize(request: HttpRequest):
         'selected_base': user_base
     }
     return render(request, 'benchmarks/custom.html', context)
+
+def manytable(request: HttpRequest):
+    user_columns = request.GET.getlist('columns')
+    user_tables = request.GET.getlist('tables')
+    user_filter= request.GET.getlist('filter')
+    tab= user_tables[:]
+
+    #For special metric
+    extra = False
+    if 'benchmarks_performancevalue' in user_tables or 'benchmarks_performancemetric' in user_tables:
+        extra = True
+   
+
+    if user_tables:
+        existing_col,join_clauses = graph.connect_all(user_tables)
+    else:
+        join_clauses = "benchmarks_manufacturer"
+        existing_col = ['benchmarks_manufacturer.name']
+    #print(existing_col)
+    displaycol =[]
+    if not user_columns or "reset" in user_columns:
+        displaycol = existing_col
+    else:
+        for col in user_columns:
+            if col in existing_col:
+                displaycol.append(col)
+        if displaycol == []:
+            displaycol = existing_col
+    
+    #For special metric
+    if extra:
+        displaycol.append('temp_metric.combined')
+        displaycol.append('temp_metric.chosen')
+
+    filter=[]
+    if user_filter:
+        for index in range(0,len(user_filter)-1,2):
+            if user_filter[index+1] != '':
+                filter.append(user_filter[index] + " like '%" + user_filter[index+1] + "%'")
+    
+
+
+    sql_query = f"SELECT {', '.join(displaycol)} FROM {join_clauses} "
+    extrastring=''
+    if extra:
+        extrastringcreate = '''
+        CREATE TEMPORARY TABLE temp_metric (
+        performance_report_id INTEGER,
+        combined TEXT,
+        chosen TEXT)'''
+
+        extrastringinsert = '''INSERT INTO temp_metric (performance_report_id, combined, chosen)
+        SELECT performance_report_id,
+        GROUP_CONCAT(value || ' ' || name, ', ') AS combined,
+        MAX(CASE 
+               WHEN name = 'Modularity Ratio (current/Best)' THEN value
+               ELSE NULL
+           END) AS chosen
+        FROM benchmarks_performancevalue
+        full join benchmarks_performancemetric on benchmarks_performancemetric.id = benchmarks_performancevalue.metric_id
+        group by performance_report_id
+
+        '''
+        sql_query = sql_query + " full join temp_metric on benchmarks_performancereport.id = temp_metric.performance_report_id"
+    if filter:
+        sql_query += 'where ' + ' and '.join(filter)
+
+    
+
+    group=[]
+    colname=[]
+    groupnum={}
+    
+    for item in displaycol:
+        groupitem = item.split('.')
+        colname.append(groupitem[1])
+        groupname = groupitem[0]
+        groupnamelist = groupname.split('_')
+        groupname1 = groupnamelist[1]
+        if groupname1 not in group:
+            group.append(groupname1)
+            groupnum[groupname1]=1
+        else:
+            groupnum[groupname1]+=1
+    
+    #print(group)
+    #print(groupnum)
+    combined = [(name, groupnum[name]) for name in group]
+    print(sql_query)
+    with connection.cursor() as cursor:
+            if extra:
+                cursor.execute(extrastringcreate)
+                cursor.execute(extrastringinsert)
+            cursor.execute(sql_query)
+            joined_results = cursor.fetchall()
+            columns = displaycol
+
+    context = {
+        'sql_query': sql_query,
+        'joined_results': joined_results,
+        'columns': columns,
+        'selected_columns': user_columns,
+        'selected_tables': tab,
+        'colname': colname,
+        'combined': combined,
+    }
+    return render(request, 'benchmarks/ManyTable.html', context)
  

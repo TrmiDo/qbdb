@@ -47,3 +47,17 @@ th {
 .scrollable-container tbody td, .scrollable-container thead th {
     min-width: 150px; /* Adjust width as needed */
 }
+.Table_List {
+    max-height: 200px; /* Set the maximum height */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    border: 1px solid #ccc; /* Optional: Add a border */
+    padding: 10px; /* Optional: Add some padding */
+}
+.Table_List ul {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+.Table_List li {
+    padding: 5px 0; /* Add some padding to each item */
+}

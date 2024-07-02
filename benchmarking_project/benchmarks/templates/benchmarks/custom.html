@@ -68,7 +68,7 @@
                         {% for col in columns %}
                             <th>
                                 <input type="checkbox" name="columns" value="{{col}}" >
-                                {{ col }}
+                                <a class="itemheader">{{ col }}</a>
                                 </th>
                         {% endfor %}
                     </tr>
@@ -101,6 +101,7 @@
                     {% endfor %}
                 </tbody>
             </table>
+            <button id="downloadButton">Download CSV</button>
         </div>
 
         
@@ -111,6 +112,7 @@
 
 <script>
         $(document).ready(function() {
+            
             $('#example').DataTable({
                 
                 "scrollX": true,    // Enable horizontal scrolling
@@ -118,7 +120,9 @@
                 "searching": false,  // Enable searching
                 "ordering": true    // Enable column sorting
             });
+            
         });
-    </script>
-
+        
+</script>
+<script src="{% static 'benchmarks/scripts/script1.js' %}"></script>
 {% endblock %}
