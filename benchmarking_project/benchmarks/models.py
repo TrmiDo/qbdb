@@ -54,10 +54,10 @@ class Topology(models.Model):
 
 class Processor(models.Model):
     name = models.CharField(max_length=50, null=False, blank=False)
-    technology = models.ForeignKey(Technology, on_delete=models.CASCADE, null=False, blank=False)
-    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE, null=False, blank=False)
+    technology = models.ForeignKey(Technology, on_delete=models.SET_NULL, null=True, blank=False)
+    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.SET_NULL, null=True, blank=False)
     physical_qubits = models.IntegerField(null=True, blank=True, default=None)
-    topology = models.ForeignKey(Topology, on_delete=models.CASCADE, null=True, blank=True, default=None)
+    topology = models.ForeignKey(Topology, on_delete=models.SET_NULL, null=True, blank=False)
     intro_year = models.IntegerField(null=True, blank=True, default=None)
     rep_rate = models.FloatField(null=True, blank=True, default=None)
     url1 = models.URLField(max_length=200, blank=True)
@@ -87,27 +87,27 @@ class Gate(models.Model):
         return f"{self.qubits}, {self.name}"
     
 class GateSetMembership(models.Model):
-    gate_set = models.ForeignKey(GateSet, on_delete=models.CASCADE, null=False, blank=False)
-    gate = models.ForeignKey(Gate, on_delete=models.CASCADE, null=False, blank=False)
+    gate_set = models.ForeignKey(GateSet, on_delete=models.SET_NULL, null=True, blank=False)
+    gate = models.ForeignKey(Gate, on_delete=models.SET_NULL, null=True, blank=False)
 
     def __str__(self):
         return f"{self.gate_set} - {self.gate.qubits}Q {self.gate.name}"
 
 class System(models.Model):
     name = models.CharField(max_length=50, null=False, blank=False)
-    manufactor = models.ForeignKey(Manufacturer, on_delete=models.CASCADE, null=False, blank=False)
-    processor = models.ForeignKey(Processor, on_delete=models.CASCADE, null=False, blank=False)
+    manufactor = models.ForeignKey(Manufacturer,  on_delete=models.SET_NULL, null=True, blank=True)
+    processor = models.ForeignKey(Processor, on_delete=models.SET_NULL, null=True, blank=True)
     intro_year = models.IntegerField(null=True, blank=True, default=None)
-    gate_set = models.ForeignKey(GateSet, on_delete=models.CASCADE, null=True, blank=True, default=None)
-    url1 = models.URLField(max_length=200, blank=True)
-    url2 = models.URLField(max_length=200, blank=True)
-    notes = models.TextField(blank=True)
+    gate_set = models.ForeignKey(GateSet, on_delete=models.SET_NULL, null=True, blank=True)
+    url1 = models.URLField(max_length=200, null=True, blank=True)
+    url2 = models.URLField(max_length=200, null=True, blank=True)
+    notes = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.name
 
 class Calibration(models.Model):
-    system = models.ForeignKey(System, on_delete=models.CASCADE, null=False, blank=False)
+    system = models.ForeignKey(System, on_delete=models.SET_NULL, null=True, blank=False)
     date = models.DateTimeField(null=True, blank=True, default=None)
     eplg = models.FloatField(null=True, blank=True, default=None)
     clops = models.IntegerField(null=True, blank=True, default=None)
@@ -166,7 +166,7 @@ class ProblemInstance(models.Model):
     notes = models.TextField(null=True, blank=True, default=None)
 
 class PerformanceReport(models.Model):
-    problem = models.ForeignKey(ProblemInstance, on_delete=models.SET_NULL, null=True, blank=False)
+    problem = models.ForeignKey(ProblemInstance, on_delete=models.SET_NULL, null=True, blank=True)
     qubo_var_count = models.IntegerField(null=True, blank=True, default=None)
     qubo_quad_term_count = models.IntegerField(null=True, blank=True, default=None)
     system = models.ForeignKey(System, on_delete=models.CASCADE, null=True, blank=True, default=None)
@@ -176,8 +176,8 @@ class PerformanceReport(models.Model):
     mean_chain_length = models.IntegerField(null=True, blank=True, default=None)
     max_chain_length = models.IntegerField(null=True, blank=True, default=None)
     num_runs = models.IntegerField(null=True, blank=True, default=None)
-    url1 = models.URLField(max_length=200, blank=True)
-    url2 = models.URLField(max_length=200, blank=True)
+    url1 = models.URLField( null=True, blank=True)
+    url2 = models.URLField( null=True, blank=True)
     notes = models.TextField(null=True, blank=True, default=None)
 
     
@@ -185,7 +185,7 @@ class PerformanceReport(models.Model):
     
 # New Multiple Columns Model
 class CompilationStep(models.Model):
-    compilation_tool = models.ForeignKey(CompilationTool,on_delete=models.SET_NULL, null=True, blank=False)
+    compilation_tool = models.ForeignKey(CompilationTool,on_delete=models.SET_NULL, null=True, blank=True)
     version = models.FloatField(null=True, blank=True, default=None)
     compilation_algorithmn = models.ForeignKey(CompilationAlgorithmn, on_delete=models.SET_NULL, null=True, blank=False)
     performance_report = models.ForeignKey(PerformanceReport, on_delete=models.SET_NULL, null=True, blank=False)

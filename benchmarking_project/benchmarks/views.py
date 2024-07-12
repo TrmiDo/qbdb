@@ -368,9 +368,18 @@ def manytable(request: HttpRequest):
 
     #For special metric
     extra = False
-    if 'benchmarks_performancevalue' in user_tables or 'benchmarks_performancemetric' in user_tables:
-        extra = True
-   
+    if 'benchmarks_performancevalue' in user_tables:
+        user_tables.append('benchmarks_performancemetric')
+        if 'benchmarks_performancereport' in user_tables:
+            extra = True
+    if "benchmarks_compilationstep" in user_tables:
+        user_tables.append("benchmarks_compilationtool")
+        user_tables.append("benchmarks_compliationalgorithmn")
+    if "benchmarks_performancereport" in user_tables:
+        user_tables.append("benchmarks_solver")
+    if "benchmarks_processor" in user_tables:
+        user_tables.append("benchmarks_technology")
+
 
     if user_tables:
         existing_col,join_clauses = graph.connect_all(user_tables)
@@ -424,7 +433,7 @@ def manytable(request: HttpRequest):
         '''
         sql_query = sql_query + " full join temp_metric on benchmarks_performancereport.id = temp_metric.performance_report_id"
     if filter:
-        sql_query += 'where ' + ' and '.join(filter)
+        sql_query += ' where ' + ' and '.join(filter)
 
     
 
