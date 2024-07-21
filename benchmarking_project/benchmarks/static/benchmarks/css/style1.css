@@ -3,6 +3,7 @@
     justify-content: space-evenly;
     align-items: center; /* Ensures items are centered vertically */
     padding: 20px; /* Adds some padding around the container */
+    margin: 5%;
 }
 .profile-container {
     background: #ffffff;
@@ -109,4 +110,7 @@
 .profilecomment {
     text-align: justify; /* Makes the text justified */
     padding: 10px;
+}
+body {
+    font-family: 'Andale Mono', monospace;
 }

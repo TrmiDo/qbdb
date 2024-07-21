@@ -11,8 +11,16 @@ from . import views
 app_name = 'benchmarks'  # creates a namespace for this app
 urlpatterns = [
     path('', views.index, name='index'),
+    path('people/', views.people, name='people'),
     path('admin/', admin.site.urls),
+    path('algorithm-and-application/', views.algoandapp),
+    path('reference/', views.ref),
 
+    path('report/', Performance),
+    path('instance/', ProblemInstanceList),
+    path('system/', SystemCali),
+    path('processor/', ProcessorList),
+    path('gate/', GateList),
     path('manufacturers/', ManufacturerTable.as_view()),
     path('technologies/', TechnologyTable.as_view()),
     path('solvers/', SolverTable.as_view()),

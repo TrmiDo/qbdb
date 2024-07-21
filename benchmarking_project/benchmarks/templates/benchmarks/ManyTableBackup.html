@@ -38,7 +38,9 @@
         <button id="updateButton" type="submit">Update Table</button>
     </div>
 
-   
+    <label><input type="checkbox" name="columns" value="reset" >Reset</label>
+
+
 
     <div class="scrollable-container">
             
@@ -50,11 +52,29 @@
                                 <th colspan="{{ num }}">{{ name }}</th>
                             {% endfor %}
                         </tr>
+                        <tr>
+                            {% for col in columns %}
+                                <th>
+                                    <input type="checkbox" name="columns" value="{{col}}" >
+                                </th>
+                            {% endfor %}
+                        </tr>
                 
                         <tr>
                             {% for col in colname %}
                                 <th>
                                     <a class="itemheader">{{ col }}</a>
+                                </th>
+                            {% endfor %}
+                        </tr>
+                
+                        <tr>
+                            {% for col in columns %}
+                                <th>
+                                    {% with "filter_"|add:col as filter_name %}
+                                        <input type="hidden" name="filter" value="{{ col }}" />
+                                        <input type="text" name="filter" class="inputtext" />
+                                    {% endwith %}
                                 </th>
                             {% endfor %}
                         </tr>

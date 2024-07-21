@@ -1,5 +1,5 @@
 asgiref==3.8.1
-Django==4.2.14
+Django==5.0.4
 django-tables2==2.7.0
 numpy==2.0.0
 pandas==2.2.2

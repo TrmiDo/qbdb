@@ -3,9 +3,17 @@
 {% block content %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'benchmarks/css/style2.css' %}">
-<div class='title'>
-        <h1>Joined Table Results</h1>
-</div>
+<div class="container">
+        
+        <div class="profile-container">
+            <h1>Problem Instances</h1>
+            <p class="profilecomment">
+                This table include all the problems that are used for benchmarking.     
+            </p>
+        </div>
+        <div class="petercontent"><div><img src="{% static 'benchmarks/images/ProblemInstance.png' %}" class="peterprofilepic"></div></div>
+        
+    </div>
 
 <div class="scrollable-container">
         <table border="1">

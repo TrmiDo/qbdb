@@ -4,53 +4,45 @@
 <head>
     <link rel="stylesheet" href="{% static 'benchmarks\css\style.css'%}">
     <title>{% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" href="{% static 'benchmarks/images/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'benchmarks/images/favicon.ico' %}" type="image/x-icon">
+    <style>
+        .header-one {
+        background-image:  url("{% static 'benchmarks/images/HeaderBackground.png' %}"); /* Add your image URL here */
+        background-size: cover; /* Increase width to 150% and keep the height auto */
+        background-position: center; /* Center the image */
+        color: white;
+        padding: 0px;
+        text-align: center;
+    }
+    </style>
 </head>
 <body>
-    <header class="dbheader" class="LogoA">
-        <a href="/benchmarks">
-            <img src="{% static 'benchmarks/images/Notre-Dame-Leprechaun-Logo2.png' %}" alt="AppLogo">
-        </a>
+    <header class="header-one">
+        <ul class="header-one-sublist">
+            <li class="header-one-sublist-item"><a href="https://www.purdue.edu/cqt/"><img src="{% static 'benchmarks/images/cqtlogo.png' %}" alt="AppLogo"></a></li>
+            <li class="header-one-sublist-item"><a href="https://www.nd.edu/"><img src="{% static 'benchmarks/images/notredamelogo.png' %}" alt="AppLogo"></a></li>
+            <li class="header-one-sublist-item"><a href="https://www.nsf.gov/"><img src="{% static 'benchmarks/images/nsflogo.png' %}" alt="AppLogo"></a></li>     
+        </ul>
+    </header>
+    <header class="dbheader">
         <ul class="tabs">
             <li class="tabsitem"><a href="/admin">Admin Site</a></li>
-            <li class="tabsitem"><a>Single Column</a>
+            <li class="tabsitem"><a href="/">Home</a></li>
+            <li class="tabsitem"><a>All Data</a>
                 <ul class="sublist">
-                    <li class="sublist-item"><a href="/benchmarks/manufacturers">Manufacturers</a></li>
-                    <li class="sublist-item"><a href="/benchmarks/technologies">Technologies</a></li>
-                    <li class="sublist-item"><a href="/benchmarks/solvers">Solvers</a></li>
-                    <li class="sublist-item"><a href="/benchmarks/performancemetrics">Performance Metrics</a></li>
-                    <li class="sublist-item"><a href="/benchmarks/compilationtools">Compilation Tools</a></li>
-                    <li class="sublist-item"><a href="/benchmarks/compilationalgorithmns">Compilational Algorithm</a></li>
-                    
+                    <li class="sublist-item"><a href="/benchmarks/report">Performance</a></li>
+                    <li class="sublist-item"><a href="/benchmarks/instance">Problems</a></li>
+                    <li class="sublist-item"><a href="/benchmarks/system">System</a></li>
+                    <li class="sublist-item"><a href="/benchmarks/processor">Processor</a></li>
+                    <li class="sublist-item"><a href="/benchmarks/gate">Gate</a></li>
                 </ul>
             </li>
-            <li class="tabsitem"><a>Multiple Column</a>
-                <ul class="sublist">
-                    <li class="sublist-item"><a href="/benchmarks/topologies">Topologies</a></li>
-                    <li class="sublist-item"><a href="/benchmarks/processors">Processors</a></li>
-                    <li class="sublist-item"><a href="/benchmarks/gatesets">Gate Sets</a></li>
-                    <li class="sublist-item"><a href="/benchmarks/gates">Gates</a></li>
-                    <li class="sublist-item"><a href="/benchmarks/gatesetmemberships">Gate Set Membership</a></li>
-                    <li class="sublist-item"><a href="/benchmarks/systems">Systems</a></li>
-                    <li class="sublist-item"><a href="/benchmarks/calibrations">Calibrations</a></li>
-                    <li class="sublist-item"><a href="/benchmarks/graphs">Graphs</a></li>
-                    <li class="sublist-item"><a href="/benchmarks/problems">Problems</a></li>
-                    <li class="sublist-item"><a href="/benchmarks/performancereports">Performance Reports</a></li>
-                    <li class="sublist-item"><a href="/benchmarks/compilationsteps">Compilation Steps</a></li>
-                    <li class="sublist-item"><a href="/benchmarks/performancevalues">Performance Values</a></li>
-                    <li class="sublist-item"><a href="/benchmarks/probleminstances">Problem Instance</a></li>
-                </ul>
-            </li>
-            <li class="tabsitem"><a>5 Main</a>
-                <ul class="sublist">
-                    <li class="sublist-item"><a href="/benchmarks/joined-performance">performance</a></li>
-                    <li class="sublist-item"><a href="/benchmarks/joined-problems">problems</a></li>
-                    <li class="sublist-item"><a href="/benchmarks/joined-system">system</a></li>
-                    <li class="sublist-item"><a href="/benchmarks/joined-processor">processor</a></li>
-                    <li class="sublist-item"><a href="/benchmarks/joined-gate">gate</a></li>
-                    <li class="sublist-item"><a href="/benchmarks/customize">customize</a></li>
-                    <li class="sublist-item"><a href="/benchmarks/ManyTable">Many Table</a></li>
-                </ul>
-            </li>
+            <li class="tabsitem"><a href="/benchmarks/algorithm-and-application">Algorithm and Application</a></li>
+            <li class="tabsitem"><a href="/benchmarks/ManyTable">Query Interface</a></li>
+            <li class="tabsitem"><a href="/benchmarks/reference">Reference</a></li>
+            <li class="tabsitem"><a href="/benchmarks/people">People</a></li>
+            <li class="tabsitem"><a href="https://forms.gle/WRE5rmA2HXYE9gd79">Contact Us</a></li>
         </ul>
     </header>
     {% block content %}{% endblock %}

@@ -1,0 +1,34 @@
+
+.homebody {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    
+}
+.homebody h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+.homebody hr {
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin-bottom: 20px;
+}
+.homebody p {
+    margin: 20px 0;
+}
+.left {
+    width: 70%;
+    text-align: left;
+}
+
+.hometable {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    
+}
+body {
+    font-family: 'Andale Mono', monospace;
+}

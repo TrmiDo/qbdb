@@ -15,6 +15,12 @@ import pandas as pd
 # Create your views here.
 def index(request):
     return render(request, 'benchmarks/index.html')
+def people(request):
+    return render(request, 'benchmarks/people.html')
+def algoandapp(request):
+    return render(request, 'benchmarks/algoandapp.html')
+def ref(request):
+    return render(request, 'benchmarks/reference.html')
 
 class CompilationToolTable(SingleTableView):
     model = CompilationTool
@@ -113,15 +119,48 @@ class PerformanceReportTable(SingleTableView):
     template_name = "benchmarks/table.html"
 
 def Performance(request):
-    
+    extrastringcreate = '''
+        CREATE TEMPORARY TABLE temp_metric (
+        performance_report_id INTEGER,
+        combined TEXT,
+        chosen TEXT)'''
+
+    extrastringinsert = '''INSERT INTO temp_metric (performance_report_id, combined, chosen)
+    SELECT performance_report_id,
+    GROUP_CONCAT(value || ' ' || name, ', ') AS combined,
+    MAX(CASE 
+        WHEN name = 'Modularity Ratio (current/Best)' THEN value
+            ELSE NULL
+        END) AS chosen
+    FROM benchmarks_performancevalue
+    full join benchmarks_performancemetric on benchmarks_performancemetric.id = benchmarks_performancevalue.metric_id
+    group by performance_report_id
+    '''
     with connection.cursor() as cursor:
-        cursor.execute('''SELECT * FROM benchmarks_PerformanceReport as a 
+        cursor.execute(extrastringcreate)
+        cursor.execute(extrastringinsert)
+        cursor.execute('''SELECT a.id,
+        a.qubo_var_count,
+        a.qubo_quad_term_count,
+        a.qubit_count,
+        a.rcs,
+        a.mean_chain_length,
+        a.max_chain_length,
+        a.num_runs,
+        b.name,
+        temp_metric.combined,
+        temp_metric.chosen,
+        e.version,
+        f.name,
+        g.name
+         FROM benchmarks_PerformanceReport as a 
         left join benchmarks_solver as b on a.solver_id =b.id
         left join benchmarks_performanceValue as c on c.performance_report_id = a.id 
         left join benchmarks_performanceMetric as d on c.metric_id= d.id
         left join benchmarks_compilationstep as e on e.performance_report_id = a.id
         left join benchmarks_compilationAlgorithmn as f on f.id= e.compilation_Algorithmn_id
-        left join benchmarks_compilationTool as g on g.id = e.compilation_tool_id''')
+        left join benchmarks_compilationTool as g on g.id = e.compilation_tool_id
+        full join temp_metric on a.id = temp_metric.performance_report_id''')
         joined_results = cursor.fetchall()
 
     # Check if any results were fetched
@@ -133,12 +172,15 @@ def Performance(request):
         'joined_results': joined_results,  # Ensure this matches your template
         'columns': columns
     }
-    return render(request, 'benchmarks/maintable.html', context)
+    return render(request, 'benchmarks/report.html', context)
 
 def ProblemInstanceList(request):
     
     with connection.cursor() as cursor:
-        cursor.execute('''SELECT * FROM benchmarks_ProblemInstance as a 
+        cursor.execute('''SELECT a.id,
+        a.graph_size,
+        b.name,
+        c.name FROM benchmarks_ProblemInstance as a 
         left join benchmarks_graph as b on a.graph_id =b.id
         left join benchmarks_problem as c on c.id = a.problem_id
         ''')
@@ -153,7 +195,7 @@ def ProblemInstanceList(request):
         'joined_results': joined_results,  # Ensure this matches your template
         'columns': columns
     }
-    return render(request, 'benchmarks/maintable.html', context)
+    return render(request, 'benchmarks/ProblemInstance.html', context)
 
 
 def SystemCali(request):
@@ -173,7 +215,7 @@ def SystemCali(request):
         'joined_results': joined_results,  # Ensure this matches your template
         'columns': columns
     }
-    return render(request, 'benchmarks/maintable.html', context)
+    return render(request, 'benchmarks/System.html', context)
 
 
 
@@ -196,7 +238,7 @@ def ProcessorList(request):
         'joined_results': joined_results,  # Ensure this matches your template
         'columns': columns
     }
-    return render(request, 'benchmarks/maintable.html', context)
+    return render(request, 'benchmarks/Processor.html', context)
 
 def GateList(request):
     
@@ -216,7 +258,7 @@ def GateList(request):
         'joined_results': joined_results,  # Ensure this matches your template
         'columns': columns
     }
-    return render(request, 'benchmarks/maintable.html', context)
+    return render(request, 'benchmarks/Gate.html', context)
 
 def Value(request):
     

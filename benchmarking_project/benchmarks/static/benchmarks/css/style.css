@@ -1,44 +1,77 @@
-.LogoA{
-    margin:0;
+.header-one-sublist {
+    list-style: none;
     padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
-.AppLogo{
-    margin: 1000;
-    padding: 1000;
-    margin-left: 5vw;
-}
-.tabsitem{
-    display: inline;
-    font-family: 'Roboto';
-    border-radius: 10px;
-    margin:0px;
-    position: relative;
-    
 
-    
+.header-one-sublist-item {
+    flex: 1;
+
 }
+
+.header-one-sublist-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.dbheader::before {
+    content: "";
+    position: absolute;
+    top: -10px; /* Adjust based on desired overlap */
+    left: 0;
+    right: 0;
+    height: 10px; 
+    background-color:#ae9142; 
+    z-index: -1; 
+}
+
+.dbheader {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    background-color: rgb(12, 35, 64);
+    color: white;
+    position: -webkit-sticky; 
+    position: sticky;
+    top: 0;
+    padding: 1%;
+    margin: 0;
+    border: 0;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.tabs {
+    display: flex;
+    padding: 0;
+    margin: 0 10%;
+    list-style: none;
+}
+
+.tabsitem {
+    position: relative;
+}
+
 .tabsitem a {
-    text-decoration: none; /* Remove underline */
-    color: white; /* Change text color */
-    padding: 10px; /* Add some padding */
-    display: inline-block; /* Make padding apply correctly */
-    margin:0px;
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    display: block;
+    margin: 0;
 }
 
 .tabsitem a:hover {
-    
-    background-color: rgba(255, 255, 255, 0.05); /* Add background color on hover */
-    fill-opacity: unset;
-    padding-top: 10%;
-    padding-bottom: 10%;
-    border:0px;
-    
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .sublist {
     display: none;
     position: absolute;
-    top: 300%;
+    top: 100%;
     left: 0;
     background-color: rgb(12, 35, 64);
     padding: 10px 0;
@@ -51,6 +84,7 @@
 .sublist .sublist-item a {
     padding: 10px 20px;
     color: white;
+    display: block;
 }
 
 .sublist .sublist-item a:hover {
@@ -61,40 +95,8 @@
     display: block;
 }
 
-.tabs{
-    
-    padding: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    margin-right: 10%;
-    border:0px;
-}
 
-.dbheader {
-width: 102%;
- display: flex;
- align-items: center;
-justify-content: space-between; 
-background-color: rgb(12, 35, 64);
-color: white;
- position: -webkit-sticky; 
-position: sticky;
-top: 0;
-padding: 0px; 
-margin: 0px;
-border:0px;
-/*border-radius: 10px;*/
-}
-.dbheader::before {
-    content: "";
-    position: absolute;
-    top: -10px; /* Adjust based on desired overlap */
-    left: 0;
-    right: 0;
-    height: 20px; 
-    background-color:#ae9142; 
-    z-index: -1; 
-}
+
 /**{
     border: 2px solid #000;
 }*/
