@@ -1,0 +1,132 @@
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center; /* Ensures items are centered vertically */
+    padding: 20px; /* Adds some padding around the container */
+    margin: 5%;
+}
+.profile-container {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 50%;
+    text-align: center;
+}
+
+.profile-container h1 {
+    font-size: 2.5em;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-family: 'Andale Mono', monospace;
+    letter-spacing: 1px;
+}
+
+.profile-container p.profilecomment {
+    font-size: 1.1em;
+    color: #34495e;
+    line-height: 1.6;
+    text-align: justify;
+    padding: 10px;
+    background: linear-gradient(135deg, #ece9e6, #ffffff);
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 20px;
+    }
+
+    .profile-container h1 {
+        font-size: 2em;
+    }
+
+    .profile-container p.profilecomment {
+        font-size: 1em;
+    }
+}
+.peterprofilepic {
+    width: 100%; /* Adjust the width as needed */
+    min-width: 400px;
+    max-width: 400px; /* Maximum width to prevent it from being too large */
+    border-top-left-radius: 20%; /* Optional: Make the image round */
+    border-bottom-right-radius: 20%;
+}
+
+.ulrikcontent {
+    display: flex;
+    flex-direction: column; /* Aligns children vertically */
+    align-items: center; /* Centers children horizontally */
+    width: 40%;
+    justify-content: center;
+    /*background: linear-gradient(-45deg, #788cff, #b4c8ff);*/
+    
+}
+.ulrikprofilepic {
+    width: 100%; /* Adjust the width as needed */
+    min-width: 400px;
+    max-width: 1000px; /* Maximum width to prevent it from being too large */
+    border-top-right-radius: 20%; /* Optional: Make the image round */
+    border-top-left-radius: 20%; /* Optional: Make the image round */
+    border-bottom-left-radius: 20%;
+}
+
+.trietcontent {
+    display: flex;
+    flex-direction: column; /* Aligns children vertically */
+    align-items: center; /* Centers children horizontally */
+    width: 30%;
+    justify-content: center;
+    /*background: linear-gradient(-45deg, #788cff, #b4c8ff);*/
+    
+}
+.trietprofilepic {
+    
+    width: 300px; /* Maximum width to prevent it from being too large */
+    border-radius:  10%;
+}
+
+.brabycontent {
+    display: flex;
+    flex-direction: column; /* Aligns children vertically */
+    align-items: center; /* Centers children horizontally */
+    width: 40%;
+    justify-content: center;
+    /*background: linear-gradient(-45deg, #788cff, #b4c8ff);*/
+    
+}
+.brabyprofilepic {
+    width: 100%; /* Adjust the width as needed */
+    min-width: 300px;
+    max-width: 1000px; /* Maximum width to prevent it from being too large */
+    border-bottom-right-radius: 20%; /* Optional: Make the image round */
+    border-top-right-radius: 20%; /* Optional: Make the image round */
+    border-bottom-left-radius: 20%;
+}
+.content {
+    display: flex;
+    flex-direction: column; /* Aligns children vertically */
+    align-items: center; /* Centers children horizontally */
+    width: 40%;
+    justify-content: center;
+    /*background: linear-gradient(-45deg, #788cff, #b4c8ff);*/
+    background-color: rgba(0,0,0,0.1);
+    padding: 20px; /* Adds some padding inside each content box */
+    box-sizing: border-box; /* Ensures padding is included in width */
+}
+
+.profilepic {
+    width: 100%; /* Adjust the width as needed */
+    min-width: 400px;
+    max-width: 1000px; /* Maximum width to prevent it from being too large */
+    border-top-left-radius: 20%; /* Optional: Make the image round */
+    border-bottom-right-radius: 20%;
+}
+
+.profilecomment {
+    text-align: justify; /* Makes the text justified */
+    padding: 10px;
+}
+body {
+    font-family: 'Andale Mono', monospace;
+}

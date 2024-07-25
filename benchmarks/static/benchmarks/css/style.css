@@ -1,0 +1,123 @@
+.header-one-sublist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header-one-sublist-item {
+    flex: 1;
+
+}
+
+.header-one-sublist-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.dbheader::before {
+    content: "";
+    position: absolute;
+    top: -10px; /* Adjust based on desired overlap */
+    left: 0;
+    right: 0;
+    height: 10px; 
+    background-color:#ae9142; 
+    z-index: -1; 
+}
+
+.dbheader {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    background-color: rgb(12, 35, 64);
+    color: white;
+    position: -webkit-sticky; 
+    position: sticky;
+    top: 0;
+    padding: 1%;
+    margin: 0;
+    border: 0;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.tabs {
+    display: flex;
+    padding: 0;
+    margin: 0 10%;
+    list-style: none;
+}
+
+.tabsitem {
+    position: relative;
+}
+
+.tabsitem a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    display: block;
+    margin: 0;
+}
+
+.tabsitem a:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.sublist {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(12, 35, 64);
+    padding: 10px 0;
+    list-style: none;
+    margin: 0;
+    width: 200px;
+    border-radius: 5px;
+}
+
+.sublist .sublist-item a {
+    padding: 10px 20px;
+    color: white;
+    display: block;
+}
+
+.sublist .sublist-item a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.tabsitem:hover .sublist {
+    display: block;
+}
+
+
+
+/**{
+    border: 2px solid #000;
+}*/
+
+body{
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+.dbfooter {
+    padding: 1%;
+    width: 100%; /* Ensure it stretches across the full width */
+    background-color: whitesmoke;
+    display: flex; /* Use flexbox for horizontal alignment */
+    justify-content: space-around;
+}
+
+.footeraddress{
+    list-style-type: none; /* Removes bullet points */
+    font-family: 'Roboto'
+}
+
+
+

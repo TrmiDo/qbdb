@@ -1,0 +1,163 @@
+.interfacebody {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    
+}
+
+.interfacebody h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+
+.scrollable-container {
+    height: 700px; /* Adjust as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-top: 60px; /* Adjust for the fixed header height */
+    border: 1px solid #ccc; /* Add border to container */
+    padding: 10px; /* Add padding to container */
+    background-color: #f9f9f9; /* Light background for container */
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px; /* Add padding to cells */
+    
+    border-bottom: 1px solid #ddd; /* Add bottom border to rows */
+}
+
+th, tfoot, td {
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid rgb(189, 185, 185);
+    white-space: nowrap;
+    max-width: 150px; /* Set fixed width for all columns */
+    min-width: 150;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+td {
+    text-align: left;
+}
+
+th {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background-color:rgb(12, 35, 64); /* Light background for headers */
+}
+tr:nth-child(even) {
+    background-color: #ffffff; /* Light background for even rows */
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Slightly darker background on hover */
+}
+
+
+
+a:hover {
+    text-decoration: underline; /* Underline links on hover */
+}
+.scrollable-container thead, .scrollable-container tbody {
+    display: block;
+}
+
+.scrollable-container tbody {
+    height: 600px; /* Adjust height as needed */
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.scrollable-container thead {
+    
+    width: calc(100% - 1em); /* Adjust to hide the scrollbar width */
+}
+
+.scrollable-container tbody td, .scrollable-container thead th {
+    min-width: 150px; /* Adjust width as needed */
+}
+.Table_List {
+    max-height: 200px; /* Set the maximum height */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    border: 1px solid #ccc; /* Optional: Add a border */
+    padding: 10px; /* Optional: Add some padding */
+}
+.Table_List ul {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+.Table_List li {
+    padding: 5px 0; /* Add some padding to each item */
+}
+
+.inputtext {
+    width: 100%; /* Adjust the width as needed */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+body {
+    font-family: 'Andale Mono', monospace;
+}
+
+#downloadButton {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background-color: #1a73e8; /* Techy blue background */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    padding: 15px 30px; /* Add some padding */
+    font-size: 16px; /* Increase font size */
+    font-family: 'Andale Mono', monospace;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+#downloadButton:hover {
+    background-color: #0c5dbf; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+#downloadButton:active {
+    background-color: #0b4ea3; /* Even darker blue when clicked */
+    transform: scale(0.98); /* Slightly shrink when clicked */
+}
+
+#downloadButton:focus {
+    outline: none; /* Remove focus outline */
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.5); /* Add focus shadow */
+}
+
+#updateButton {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background-color: #1a73e8; /* Techy blue background */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    padding: 15px 30px; /* Add some padding */
+    font-size: 16px; /* Increase font size */
+    font-family: 'Andale Mono', monospace;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+#updateButton:hover {
+    background-color: #0c5dbf; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+#updateButton:active {
+    background-color: #0b4ea3; /* Even darker blue when clicked */
+    transform: scale(0.98); /* Slightly shrink when clicked */
+}
+
+#updateButton:focus {
+    outline: none; /* Remove focus outline */
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.5); /* Add focus shadow */
+}

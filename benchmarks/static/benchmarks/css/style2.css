@@ -1,0 +1,115 @@
+.scrollable-container {
+    max-height: 650px; /* Adjust as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-top: 60px; /* Adjust for the fixed header height */
+    border: 1px solid #ccc; /* Add border to container */
+    padding: 10px; /* Add padding to container */
+    background-color: #f9f9f9; /* Light background for container */
+    margin: 5%;
+    
+}
+
+table {
+    
+    border-collapse: collapse; /* Remove space between cells */
+    
+}
+
+th, td {
+    padding: 12px; /* Add padding to cells */
+    text-align: left; /* Left align text */
+    border-bottom: 1px solid #ddd; /* Add bottom border to rows */
+}
+
+th {
+    color: #ccc;
+    background-color:rgb(12, 35, 64); /* Light background for headers */
+    position: sticky;
+    top: 0;
+    z-index: 2; /* Ensure header stays above content */
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light background for even rows */
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Slightly darker background on hover */
+}
+
+
+
+a:hover {
+    text-decoration: underline; /* Underline links on hover */
+}
+
+th, tfoot, td {
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid rgb(189, 185, 185);
+    white-space: nowrap;
+    max-width: 150px; /* Set fixed width for all columns */
+    min-width: 150;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+.title {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100px; /* Optional: specify a height for vertical centering */
+}
+
+.peterprofilepic {
+    width: 90%; /* Adjust the width as needed */
+}
+
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center; ; /* Ensures items are centered vertically */
+    padding: 20px; /* Adds some padding around the container */
+    margin: 5%;
+}
+.profile-container {
+    background: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 40%;
+    text-align: center;
+}
+
+.profile-container h1 {
+    font-size: 1.5 em;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-family: 'Andale Mono', monospace;
+    letter-spacing: 1px;
+}
+
+.profile-container p.profilecomment {
+    font-size: 1.1em;
+    color: #34495e;
+    line-height: 1.6;
+    text-align: justify;
+    padding: 10px;
+    background: linear-gradient(135deg, #ece9e6, #ffffff);
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 20px;
+    }
+
+    .profile-container h1 {
+        font-size: 2em;
+    }
+
+    .profile-container p.profilecomment {
+        font-size: 1em;
+    }
+}
+body {
+    font-family: 'Andale Mono', monospace;
+}

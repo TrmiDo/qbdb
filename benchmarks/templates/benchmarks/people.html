@@ -1,0 +1,49 @@
+{% extends "benchmarks/base.html" %}
+
+{% block title %}People{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'benchmarks/css/style1.css' %}">
+<div>
+    <div class="container">
+        <div class="petercontent"><div><img src="{% static 'benchmarks/images/koge.jpg' %}" class="peterprofilepic"></div></div>
+        <div class="profile-container">
+            <h1>Peter M. Kogge</h1>
+            <p class="profilecomment">
+                    Prof. Kogge’s research encompasses parallel processing architectures, advanced VLSI technology, non von Neumann models, and parallel algorithms. His recent focus is on "Processing-in-Memory" (PIM) architectures, integrating memory and logic on single VLSI chips, and scaling these to complete systems. This involves efficient parallel topologies, control strategies, and low-power CPU designs for applications ranging from deep-space exploration to petaflops-level supercomputing. Additionally, he explores how PIM concepts may apply to quantum cellular array logic, envisioning “Processing-in-Wire.”
+                </p></div>
+        
+    </div>
+    <div class="container">
+            <div class="profile-container">
+                <h1>Ulrik de Muelenaere</h1>
+                <p class="profilecomment">
+                        Mr. Ulrik de Muelenaere, a BSc Computer Science graduate and recipient of the Vice-Chancellor and Principal award, is pursuing a PhD at the University of Notre Dame with an Arthur J. Schmitt Presidential Leadership Fellowship. He authored "QGAT: A Generate-and-Test Paradigm for Quantum Circuits" in the PLanQC 2024-track.
+                     </p></div>
+            <div class="ulrikcontent"><div><img src="{% static 'benchmarks/images/Ulrik.png' %}" class="ulrikprofilepic"></div></div>
+            
+            
+        </div>
+
+        <div class="container">
+                <div class="brabycontent"><div><img src="{% static 'benchmarks/images/braby.jpg' %}" class="brabyprofilepic"></div></div>
+                <div class="profile-container">
+                        <h1>Luke Braby</h1>
+                        <p class="profilecomment">
+                                Luke Braby, a Computer Science student and Stamps Scholar at the University of Notre Dame, has a robust background in software engineering and research. He interned at Volexity and Copia, developing Go programs for memory scanning and designing a memory pool scanner. At Copia, he also created a Go-based REST API and an ETL pipeline for delivery data. He improved system performance by caching AWS Cognito results in Redis and automated Sisense rebuilds with AWS Lambda.
+                            </p></div>
+                
+            </div>
+    <div class="container">
+        <div class="profile-container">
+            <h1>Triet Do</h1>
+                <p class="profilecomment">
+                    Triet is an undergraduate student majoring in Mathematics and Computer Science. He has extensive experience in software development and research, ranging from data migration in vehicles fleet systems with Drivers' Alert to data analysis of antihypertensive medication for diabetic patients. He is passionate about working on and improving database systems in every project he undertakes.
+                    </p></div>
+            <div class="trietcontent"><div><img src="{% static 'benchmarks/images/triet.jpg' %}" class="trietprofilepic"></div></div>
+                
+                
+    </div>
+</div>
+{% endblock %}
